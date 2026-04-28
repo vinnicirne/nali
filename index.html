@@ -776,10 +776,10 @@
         const supabaseUrl = 'https://xihkdfdlwfwaxfckhjnl.supabase.co'; // Extraído via Token
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpaGtkZmRsd2Z3YXhmY2toam5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMjExMjEsImV4cCI6MjA5Mjg5NzEyMX0.4hvCeVI1WlXGo48PLHKSZAz9pk3C8fm1nZCGVjwfaTc'; 
         
-        let supabase = null;
+        let supabaseClient = null;
         try {
             if (window.supabase) {
-                supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+                supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
             }
         } catch (error) {
             console.error("API Supabase Indisponível:", error);
@@ -873,8 +873,8 @@
             
             let messages = [];
 
-            if (supabase) {
-                const { data, error } = await supabase.from('mural_messages').select('*').order('created_at', { ascending: false });
+            if (supabaseClient) {
+                const { data, error } = await supabaseClient.from('mural_messages').select('*').order('created_at', { ascending: false });
                 if (!error && data) {
                     messages = data;
                 } else {
@@ -917,8 +917,8 @@
             btn.innerText = "Enviando... ⏳";
             btn.disabled = true;
 
-            if (supabase) {
-                const { error } = await supabase.from('mural_messages').insert([{ name: name, message: text }]);
+            if (supabaseClient) {
+                const { error } = await supabaseClient.from('mural_messages').insert([{ name: name, message: text }]);
                 if (error) console.error("Erro ao salvar no banco:", error);
             } else {
                 const messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
