@@ -203,6 +203,27 @@
             z-index: 1;
         }
 
+        /* [FEATURE: MOBILE FIRST / STORIES VIEW] */
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+            }
+            .main-content {
+                max-width: 100vw;
+                min-height: 100vh;
+            }
+            .container {
+                border-radius: 0;
+                border: none;
+                padding: 40px 20px;
+                min-height: 100vh;
+                box-shadow: none;
+            }
+            .card-bg-video {
+                border-radius: 0;
+            }
+        }
+
         /* PHOTO FRAME */
         .photo-wrapper {
             width: 100%;
