@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sugestões de Presente - Emilly Angell</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff9ff3;
+            --primary-dark: #f368e0;
+            --bg-dark: #0f0c29;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            flex-direction: column;
+        }
+
+        /* Animação de Fundo (Estrelas) */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2) drop-shadow(0 0 5px white); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 450px;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .header-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+        }
+
+        p.description {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .gift-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .gift-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.1);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 159, 243, 0.2);
+        }
+
+        .gift-icon {
+            font-size: 28px;
+            background: rgba(255, 159, 243, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .gift-info strong {
+            display: block;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .gift-info span {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .pix-box {
+            background: linear-gradient(135deg, rgba(255, 159, 243, 0.2), rgba(243, 104, 224, 0.1));
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px dashed var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pix-box:hover {
+            background: rgba(255, 159, 243, 0.3);
+        }
+
+        .pix-box h3 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pix-key {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #fff;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+
+        .pix-msg {
+            font-size: 11px;
+            color: #ccc;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 220px;
+            background-color: var(--primary);
+            color: #1e1e2f;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        #toast.show { visibility: visible; animation: fadeinToast 0.5s, fadeoutToast 0.5s 2.5s forwards; }
+        @keyframes fadeinToast { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeoutToast { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+    </style>
+</head>
+
+<body>
+    <!-- Fundo de estrelas -->
+    <div class="stars-container" id="stars"></div>
+
+    <div class="container">
+        <div class="header-icon">🎁</div>
+        <h2>Sugestões de Presente</h2>
+        <p class="description">
+            Sua presença é o melhor presente! Mas para quem perguntou o que a Emilly gostaria de ganhar:
+        </p>
+
+        <div class="gift-list">
+            <div class="gift-card">
+                <div class="gift-icon">👗</div>
+                <div class="gift-info">
+                    <strong>Roupas / Blusinhas</strong>
+                    <span>Tamanho: M ou 14/16</span>
+                </div>
+            </div>
+            <div class="gift-card">
+                <div class="gift-icon">👟</div>
+                <div class="gift-info">
+                    <strong>Calçados</strong>
+                    <span>Tamo 36</span>
+                </div>
+            </div>
+            <div class="gift-card">
+                <div class="gift-icon">💄</div>
+                <div class="gift-info">
+                    <strong>Maquiagens & Skin Care</strong>
+                    <span>Glosses, hidratantes, paletas suaves</span>
+                </div>
+            </div>
+        </div>
+
+
+        <a href="index.html#convite" class="btn-back">
+            ⬅️ Voltar para o Convite
+        </a>
+    </div>
+
+    <div id="toast">📋 Chave Pix copiada!</div>
+
+    <script>
+        // Estrelas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size; star.style.height = size;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starsContainer.appendChild(star);
+        }
+
+
+    </script>
+</body>
+</html>

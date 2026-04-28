@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13 Anos - Emilly Angell</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff9ff3;
+            --primary-dark: #f368e0;
+            --bg-dark: #0f0c29;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* [FEATURE: INTRO ANIMADA - CINEMATOGRÁFICA] */
+        .intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 1.5s ease, visibility 1.5s;
+        }
+
+        .intro.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-text-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .intro h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: #ffffff;
+            opacity: 0;
+            animation: fadeInText 3s forwards;
+            line-height: 1.5;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .intro h1 span {
+            color: var(--primary);
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .btn-unlock {
+            opacity: 0;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.5s ease forwards 2.5s;
+            box-shadow: 0 0 15px rgba(255, 159, 243, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-unlock:hover {
+            background: var(--primary);
+            color: #1e1e2f;
+            box-shadow: 0 0 30px rgba(255, 159, 243, 0.6);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animação de Fundo (Estrelas) */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2) drop-shadow(0 0 5px white);
+            }
+        }
+
+        .main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease;
+            position: relative;
+            z-index: 1;
+            max-width: 450px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .container {
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* [CORE FIX: PHOTO RECORTE] */
+        .photo-wrapper {
+            width: 100%;
+            height: 250px;
+            margin: -20px auto 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(255, 159, 243, 0.4);
+            animation: floatPhoto 4s ease-in-out infinite, pulseProfile 1.5s infinite alternate;
+            background: linear-gradient(135deg, rgba(255,159,243,0.3), rgba(0,0,0,0.2));
+            z-index: 2;
+        }
+
+        @keyframes pulseProfile {
+            0% { box-shadow: 0 0 20px rgba(255, 159, 243, 0.4); border-color: rgba(255,159,243, 0.4); }
+            100% { box-shadow: 0 0 50px rgba(255, 159, 243, 1); border-color: var(--primary); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .age-badge-float {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            background: var(--primary);
+            color: #1e1e2f;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: rotate(10deg);
+            z-index: 5;
+            border: 2px solid white;
+            animation: floatBadge 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatPhoto {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes floatBadge {
+            0% {
+                transform: rotate(10deg) translateY(0);
+            }
+
+            100% {
+                transform: rotate(15deg) translateY(-5px);
+            }
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 45px;
+            color: var(--primary);
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+        }
+
+        .subtitle {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        /* [DASHBOARD FEATURE: COUNTDOWN UI] */
+        .countdown-container {
+            background: rgba(255, 255, 255, 0.05);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 159, 243, 0.2);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown-container h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-item span {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown-item p {
+            font-size: 10px;
+            color: #ccc;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .info-card strong {
+            display: block;
+            color: var(--primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .address-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            border: 1px dashed rgba(255, 159, 243, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .address-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .address-box strong {
+            color: var(--primary);
+        }
+
+        .dress-code-box {
+            background: linear-gradient(135deg, rgba(255, 159, 243, 0.2), rgba(243, 104, 224, 0.1));
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 159, 243, 0.2);
+            animation: pulse-border 2s infinite alternate;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 159, 243, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(255, 159, 243, 0.6);
+            }
+        }
+
+        .dress-code-box strong {
+            display: block;
+            color: var(--primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .dress-code-box p {
+            font-size: 14px;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .list-items {
+            text-align: left;
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #eee;
+        }
+
+        .list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), #f368e0);
+            color: #1e1e2f;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(255, 159, 243, 0.3);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 159, 243, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        /* Confirmation state */
+        .confirmation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 12, 41, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .confirmation-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .conf-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .conf-text {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            font-weight: 600;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards 0.3s;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 220px;
+            background-color: var(--primary);
+            color: #1e1e2f;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadeinToast 0.5s, fadeoutToast 0.5s 2.5s forwards;
+        }
+
+        @keyframes fadeinToast {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeoutToast {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        .start-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f0c29; display: flex; align-items: center; justify-content: center;
+            z-index: 10000; cursor: pointer; transition: opacity 1s ease;
+        }
+        .start-screen.hidden { opacity: 0; pointer-events: none; }
+        .start-screen p { font-size: 18px; color: var(--primary); font-weight: 600; animation: pulse-text 2s infinite; }
+        @keyframes pulse-text {
+            0% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); text-shadow: 0 0 15px var(--primary); }
+            100% { opacity: 0.5; transform: scale(0.95); }
+        }
+        .music-toggle {
+            position: absolute; top: 15px; right: 15px; background: rgba(255, 159, 243, 0.2);
+            border: 1px solid var(--primary); color: #fff; width: 45px; height: 45px;
+            border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 999;
+            backdrop-filter: blur(5px); transition: all 0.3s; display: none;
+        }
+        .music-toggle:hover { background: var(--primary); transform: scale(1.1); }
+    </style>
+</head>
+
+<body>
+
+    <!-- [NOVO] Som para Abertura e Tela de Interação Obrigatória -->
+    <audio id="openSound" src="magia.mp3"></audio>
+    <audio id="bgMusic" src="Emilly.mp3" loop></audio>
+
+    <div class="start-screen" id="startScreen" onclick="startExperience()">
+        <p>✨ Toque para iniciar a magia ✨</p>
+    </div>
+
+    <!-- Fundo de estrelas contínuo -->
+    <div class="stars-container" id="stars"></div>
+
+    <!-- [FEATURE: INTRO ANIMADA INTERATIVA] -->
+    <div class="intro" id="introScreen">
+        <div class="intro-text-container">
+            <h1>Você foi escolhido para uma noite secreta...<br><span>Emilly Angell</span></h1>
+            <button class="btn-unlock" onclick="unlockInvite()">O Segredo (Abrir Convite) 🔓</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content" id="mainContent">
+
+        <!-- VIEW: HOME (ATIVA) -->
+        <div class="container active" id="viewHome">
+            <button id="musicToggle" class="music-toggle" onclick="toggleMusic()">🔊</button>
+            <div class="photo-wrapper">
+                <div class="photo-frame">
+                    <img src="Emilly.png"
+                        alt="Emilly Angell" id="emillyPhoto">
+                </div>
+                <div class="age-badge-float" style="text-align: center; line-height: 0.9; padding: 12px 15px;">
+                    13<br><span style="font-size: 12px; font-weight: 700; text-transform: uppercase;">anos</span>
+                </div>
+            </div>
+
+            <p class="subtitle">Você está convidado para a</p>
+            <h2>Festa do Pijama</h2>
+            <div class="name">da Emilly Angell ✨</div>
+
+            <!-- [FEATURE: COUNTDOWN INTEGRADO] -->
+            <div class="countdown-container">
+                <h3>⏳ Contagem Regressiva</h3>
+                <div class="countdown-grid">
+                    <div class="countdown-item"><span id="days">00</span>
+                        <p>Dias</p>
+                    </div>
+                    <div class="countdown-item"><span id="hours">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="countdown-item"><span id="minutes">00</span>
+                        <p>Min</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="info-card">
+                    <strong>📅 Data</strong>
+                    16 de Maio
+                </div>
+                <div class="info-card">
+                    <strong>⏰ Horário</strong>
+                    20:30h
+                </div>
+            </div>
+
+
+            <div class="dress-code-box">
+                <strong>👗 Traje Obrigatório</strong>
+                <p>O seu pijama mais estiloso (e confortável!)</p>
+            </div>
+
+            <div class="list-items">
+                <div class="list-item"><span>💤</span> Traga seu travesseiro e colchonete</div>
+                <div class="list-item"><span>🍿</span> Separe a vontade de comer pipoca</div>
+                <div class="list-item"><span>🎬</span> Uma noite só para quem foi convidado...</div>
+            </div>
+
+            <!-- [LINK PARA O MURAL DE ASSINATURAS] -->
+            <a class="btn btn-secondary" onclick="openSPA('viewMural')" style="cursor: pointer; margin-bottom: 20px; font-size: 13px;">
+                ✍️ Mural de Mensagens
+            </a>
+
+            <div class="btn-group">
+                <button class="btn" onclick="confirmPresence()">
+                    Confirmar Presença 💖
+                </button>
+                <a class="btn btn-secondary" onclick="openSPA('viewSugestoes')" style="cursor: pointer;">
+                    🎁 Sugestões de Presente
+                </a>
+                <a class="btn btn-secondary" href="https://maps.app.goo.gl/wSFLmZDxpDuYiSnL8" target="_blank">
+                    🗺️ Abrir no Google Maps
+                </a>
+            </div>
+
+            <footer>
+                Prepara o pijama, vai ser mágico! 💖
+            </footer>
+        </div> <!-- /viewHome -->
+
+        <!-- VIEW: SUGESTOES DE PRESENTE -->
+        <div class="container" id="viewSugestoes" style="display:none; flex-direction:column; animation: fadeInUp 0.8s ease-out forwards;">
+            <div style="font-size: 50px; margin-bottom: 10px; animation: float 3s ease-in-out infinite;">🎁</div>
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: 30px; color: var(--primary); margin-bottom: 15px; text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);">Sugestões de Presente</h2>
+            <p style="font-size: 14px; color: #ccc; margin-bottom: 25px; line-height: 1.5;">Sua presença é o melhor presente! Mas para quem perguntou o que a Emilly gostaria de ganhar:</p>
+            <div style="display: grid; gap: 15px; margin-bottom: 30px;">
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; text-align: left;">
+                    <div style="font-size: 28px; background: rgba(255, 159, 243, 0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; min-width: 50px;">👗</div>
+                    <div><strong style="color: #fff; font-size: 16px; display:block;">Roupas / Blusinhas</strong><span style="color: #aaa; font-size: 12px;">Tamanho: M ou 14/16</span></div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; text-align: left;">
+                    <div style="font-size: 28px; background: rgba(255, 159, 243, 0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; min-width: 50px;">👟</div>
+                    <div><strong style="color: #fff; font-size: 16px; display:block;">Calçados</strong><span style="color: #aaa; font-size: 12px;">Tamanho 36</span></div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; text-align: left;">
+                    <div style="font-size: 28px; background: rgba(255, 159, 243, 0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; min-width: 50px;">💄</div>
+                    <div><strong style="color: #fff; font-size: 16px; display:block;">Maquiagens & Skin Care</strong><span style="color: #aaa; font-size: 12px;">Glosses, hidratantes, paletas</span></div>
+                </div>
+            </div>
+            <a onclick="closeSPA()" style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: transparent; color: #fff; font-weight: 600; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); align-self: center;">⬅️ Voltar para o Convite</a>
+        </div>
+
+        <!-- VIEW: MURAL -->
+        <div class="container" id="viewMural" style="display:none; flex-direction:column; animation: fadeInUp 0.8s ease-out forwards;">
+            <h2 style="font-size: 45px;">✍️</h2>
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: 32px; color: var(--primary); margin-bottom: 10px; text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);">Mural de Mensagens</h2>
+            <p style="font-size: 14px; color: #ccc; margin-bottom: 15px; line-height: 1.5;">Deixe um recadinho! Ele ficará salvo no nosso mural secreto.</p>
+            <div style="width: 100%;">
+                <input type="text" id="spaGuestName" placeholder="Seu nome ou apelido" style="width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; margin-bottom: 15px; outline: none;" />
+                <textarea id="spaGuestMessage" placeholder="Escreva sua mensagem de carinho aqui..." style="width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; margin-bottom: 15px; outline: none; resize: none; min-height: 70px;"></textarea>
+                <button onclick="spaAddMessage()" style="font-size: 15px; padding: 12px; width: 100%; background: rgba(255, 159, 243, 0.2); border: 1px solid var(--primary); color: #fff; border-radius: 10px; cursor: pointer; font-weight: 600; margin-bottom: 15px;">Enviar Mensagem 💌</button>
+            </div>
+            <div id="spaMessagesList" style="margin-top: 5px; max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; text-align: left; padding-right: 5px;"></div>
+            <a onclick="closeSPA()" style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: transparent; color: #fff; font-weight: 600; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); margin-top:20px; align-self: center;">⬅️ Voltar para o Convite</a>
+        </div>
+    </div>
+
+    <!-- Tela de confirmação -->
+    <div class="confirmation-overlay" id="confOverlay">
+        <div class="conf-icon">🎉</div>
+        <div class="conf-text">Presença confirmada!<br><span
+                style="font-size: 16px; color: #ff9ff3; display: block; margin-top: 10px;">Prepare-se… vai ser
+                inesquecível.</span></div>
+    </div>
+
+    <div id="toast">📋 Endereço copiado para área de transferência!</div>
+
+    <!-- CDN Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // === CONFIGURAR SUPABASE AQUI ===
+        const supabaseUrl = 'https://xihkdfdlwfwaxfckhjnl.supabase.co'; // Extraído via Token
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpaGtkZmRsd2Z3YXhmY2toam5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMjExMjEsImV4cCI6MjA5Mjg5NzEyMX0.4hvCeVI1WlXGo48PLHKSZAz9pk3C8fm1nZCGVjwfaTc'; 
+        const supabase = supabaseUrl !== 'SUA_URL_DO_SUPABASE' ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+
+        // [DASHBOARD] Controle de Estrelas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size; star.style.height = size;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        function toggleMusic() {
+            const bgMusic = document.getElementById('bgMusic');
+            const toggleBtn = document.getElementById('musicToggle');
+            if(bgMusic.paused) {
+                bgMusic.play();
+                toggleBtn.innerText = '🔊';
+            } else {
+                bgMusic.pause();
+                toggleBtn.innerText = '🔇';
+            }
+        }
+
+        // [DASHBOARD] Iniciar Experiência (Ignora bloqueio de áudio do Navegador)
+        function startExperience() {
+            const startScreen = document.getElementById('startScreen');
+            startScreen.style.opacity = '0';
+            
+            // Toca som mágico suave
+            const magicSound = document.getElementById('openSound');
+            magicSound.volume = 0.5;
+            magicSound.play().catch(e => console.log('Audio error:', e));
+
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+            }, 1000);
+        }
+
+        // [DASHBOARD] Desbloquear Convite
+        function unlockInvite() {
+            const intro = document.getElementById('introScreen');
+            const main = document.getElementById('mainContent');
+
+            // Iniciar a música em loop localmente (substitui o bug do youtube)
+            const bgMusic = document.getElementById('bgMusic');
+            bgMusic.volume = 0.4;
+            bgMusic.play().catch(e => console.log('Music error:', e));
+
+            // Mostra o controle de música
+            document.getElementById('musicToggle').style.display = 'block';
+            
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+                main.classList.add('visible');
+            }, 1000);
+        }
+
+        window.onload = function() {
+            spaLoadMessages();
+        };
+
+        // [DASHBOARD] SPA Logic
+        function openSPA(viewId) {
+            document.getElementById('viewHome').style.display = 'none';
+            document.getElementById('viewSugestoes').style.display = 'none';
+            document.getElementById('viewMural').style.display = 'none';
+            document.getElementById(viewId).style.display = 'flex';
+            if(viewId === 'viewMural') spaLoadMessages();
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll para o topo suave
+        }
+
+        function closeSPA() {
+            document.getElementById('viewSugestoes').style.display = 'none';
+            document.getElementById('viewMural').style.display = 'none';
+            document.getElementById('viewHome').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll para o topo suave
+        }
+
+        async function spaLoadMessages() {
+            const list = document.getElementById('spaMessagesList');
+            list.innerHTML = '<p style="color:#888; font-size:13px; text-align:center;">Carregando mensagens da nuvem...</p>';
+            
+            let messages = [];
+
+            if (supabase) {
+                const { data, error } = await supabase.from('mural_messages').select('*').order('created_at', { ascending: false });
+                if (!error && data) {
+                    messages = data;
+                } else {
+                    console.error("Erro Supabase:", error);
+                    messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
+                }
+            } else {
+                // Fallback LocalStorage enquanto não integra
+                messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
+            }
+
+            list.innerHTML = '';
+            if(messages.length === 0) {
+                list.innerHTML = '<p style="color:#888; font-size:13px; text-align:center;">Nenhuma mensagem ainda. Seja a primeira a assinar o mural!</p>';
+            }
+            messages.forEach(msg => {
+                let dataFormatada = '';
+                if(msg.created_at) {
+                    const dateObj = new Date(msg.created_at);
+                    dataFormatada = dateObj.toLocaleDateString('pt-BR');
+                } else {
+                    dataFormatada = msg.date || new Date().toLocaleDateString('pt-BR');
+                }
+                
+                list.innerHTML += `<div style="background: rgba(255, 159, 243, 0.1); padding: 12px; border-radius: 12px; border-left: 4px solid var(--primary); animation: fadeInText 0.5s ease-out;">
+                    <strong style="display:block; color:var(--primary); font-size:14px;">${msg.name}</strong>
+                    <span style="font-size:13px; color:#eee; line-height:1.4; display:block; margin: 4px 0;">${msg.message || msg.text}</span>
+                    <small style="font-size:10px; color:#888; display:block; text-align:right;">${dataFormatada}</small>
+                </div>`;
+            });
+        }
+
+        async function spaAddMessage() {
+            const name = document.getElementById('spaGuestName').value;
+            const text = document.getElementById('spaGuestMessage').value;
+            if(!name || !text) return;
+            
+            const btn = document.querySelector('button[onclick="spaAddMessage()"]');
+            const oldText = btn.innerText;
+            btn.innerText = "Enviando... ⏳";
+            btn.disabled = true;
+
+            if (supabase) {
+                const { error } = await supabase.from('mural_messages').insert([{ name: name, message: text }]);
+                if (error) console.error("Erro ao salvar no banco:", error);
+            } else {
+                const messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
+                messages.unshift({ name, text, date: new Date().toLocaleDateString('pt-BR') });
+                localStorage.setItem('emilly_messages', JSON.stringify(messages));
+            }
+            
+            document.getElementById('spaGuestName').value = '';
+            document.getElementById('spaGuestMessage').value = '';
+            
+            await spaLoadMessages();
+            
+            btn.innerText = oldText;
+            btn.disabled = false;
+            
+            const toast = document.getElementById('toast');
+            toast.innerText = 'Mensagem enviada com carinho! 💖';
+            toast.className = 'show';
+            setTimeout(() => { toast.className = ''; }, 3000);
+        }
+
+        // [DASHBOARD] Ação de Confirmação e WhatsApp
+        function confirmPresence() {
+            const overlay = document.getElementById('confOverlay');
+            overlay.classList.add('active');
+
+            // Redirecionar para WhatsApp após animação (substitua SEUNUMERO)
+            setTimeout(() => {
+                const phone = "5521973111244"; // SUBSTITUIR
+                const message = encodeURIComponent("Oi Emilly! Confirmo minha presença na festa do pijama! ✨");
+                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+
+                // Opcional: remover overlay se o user voltar
+                setTimeout(() => overlay.classList.remove('active'), 2000);
+            }, 2500);
+        }
+
+
+        // [DASHBOARD] Validação de Asset (Imagem da aniversariante)
+        const img = document.getElementById('emillyPhoto');
+        img.onerror = function () {
+            // Um fallback caso a imagem não carregue
+            this.src = "Sem%20t%C3%ADtulo%20(2).jpg";
+        };
+
+        // [DASHBOARD] Contador Regressivo (Alvo: 16 de Maio de 2026)
+        const targetDate = new Date("May 16, 2026 20:30:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff > 0) {
+                document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
