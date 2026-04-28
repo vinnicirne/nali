@@ -15,32 +15,31 @@
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0a0a0a" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #D4AF37;
-            /* Premium Gold */
-            --primary-dark: #AA7C11;
-            --bg-dark: #0A0A0A;
-            /* Deep Black */
-            --glass: rgba(0, 0, 0, 0.8);
-            /* Lighter for a more vibrant look */
-            --text: #ffffff;
-            --text-gold: #D4AF37;
+            --primary: #4da8da; /* Bluey Blue */
+            --primary-dark: #0077b6;
+            --accent: #f2a65a; /* Bingo Orange */
+            --bg-dark: #e3f2fd; /* Soft Sky Blue */
+            --glass: rgba(255, 255, 255, 0.95);
+            --text: #03045e; /* Deep Blue */
+            --text-gold: #f2a65a;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
+            background-image: radial-gradient(#fff 20%, transparent 20%), radial-gradient(#fff 20%, transparent 20%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
             color: var(--text);
             display: flex;
             align-items: center;
@@ -75,17 +74,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+            background: linear-gradient(to bottom, rgba(77, 168, 218, 0.2), rgba(3, 4, 94, 0.4));
         }
 
-        /* [FEATURE: INTRO ANIMADA - CINEMATOGRÁFICA] */
+        /* [FEATURE: INTRO ANIMADA - INFANTIL] */
         .intro {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #000, #111);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,48 +105,49 @@
         }
 
         .intro h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            font-weight: 400;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
             color: #ffffff;
             opacity: 0;
             animation: fadeInText 3s forwards;
-            line-height: 1.6;
-            letter-spacing: 2px;
+            line-height: 1.4;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .intro h1 span {
-            color: var(--primary);
-            font-family: 'Great Vibes', cursive;
-            font-size: 48px;
+            color: #fff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 42px;
             display: block;
             margin-top: 15px;
-            letter-spacing: 0;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
         }
 
         .btn-unlock {
             opacity: 0;
             margin-top: 40px;
             padding: 15px 40px;
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            background: #fff;
+            border: none;
+            color: var(--primary-dark);
             border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
             animation: fadeInUp 1.5s ease forwards 2.5s;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         .btn-unlock:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            transform: scale(1.05);
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.05) rotate(2deg);
         }
 
         @keyframes fadeInText {
@@ -194,11 +194,11 @@
         .container {
             width: 100%;
             background: var(--glass);
-            border-radius: 20px;
+            border-radius: 30px;
             padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(3, 4, 94, 0.1);
+            border: 4px solid rgba(77, 168, 218, 0.3);
             position: relative;
             z-index: 1;
         }
@@ -244,10 +244,10 @@
             height: 180px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            border: 6px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(3, 4, 94, 0.2);
             animation: floatPhoto 4s ease-in-out infinite;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(0, 0, 0, 0.5));
+            background: #fff;
         }
 
         .photo-frame img {
@@ -257,60 +257,47 @@
         }
 
         @keyframes floatPhoto {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
         }
 
         h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 52px;
-            color: var(--primary);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 42px;
+            color: var(--primary-dark);
             margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 600;
             margin-bottom: 10px;
-            color: #ccc;
-            font-weight: 300;
         }
 
         .name {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #fff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 30px;
         }
 
         /* COUNTDOWN UI */
         .countdown-container {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(77, 168, 218, 0.1);
             margin-top: 20px;
             padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            border: 2px dashed var(--primary);
         }
 
         .countdown-container h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: var(--primary);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14px;
+            color: var(--primary-dark);
             margin-bottom: 15px;
-            letter-spacing: 2px;
         }
 
         .countdown-grid {
@@ -325,17 +312,16 @@
         }
 
         .countdown-item span {
-            font-size: 32px;
-            font-weight: 300;
-            color: #fff;
-            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-family: 'Fredoka', sans-serif;
         }
 
         .countdown-item p {
-            font-size: 10px;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 12px;
+            color: var(--text);
+            font-weight: 600;
             margin-top: 5px;
         }
 
@@ -348,50 +334,46 @@
         }
 
         .info-card {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(77, 168, 218, 0.2);
             transition: all 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.02);
             border-color: var(--primary);
         }
 
         .info-card strong {
             display: block;
-            color: var(--primary);
-            font-family: 'Cinzel', serif;
-            font-size: 12px;
-            text-transform: uppercase;
+            color: var(--primary-dark);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14px;
             margin-bottom: 8px;
-            letter-spacing: 1px;
         }
 
         .dress-code-box {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.4));
+            background: linear-gradient(135deg, rgba(77, 168, 218, 0.1), rgba(242, 166, 90, 0.1));
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin-bottom: 20px;
-            border: 1px solid var(--primary);
+            border: 2px dashed var(--accent);
         }
 
         .dress-code-box strong {
             display: block;
-            color: var(--primary);
-            font-family: 'Cinzel', serif;
-            font-size: 14px;
-            text-transform: uppercase;
+            color: var(--accent);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 16px;
             margin-bottom: 8px;
-            letter-spacing: 2px;
         }
 
         .dress-code-box p {
             font-size: 14px;
-            color: #eee;
-            font-style: italic;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .btn-group {
@@ -407,13 +389,12 @@
             padding: 16px;
             border-radius: 50px;
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: #000;
+            color: #fff;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            box-shadow: 0 8px 15px rgba(77, 168, 218, 0.3);
             text-align: center;
             cursor: pointer;
             border: none;
@@ -421,29 +402,28 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px) rotate(-1deg);
+            box-shadow: 0 12px 20px rgba(77, 168, 218, 0.5);
+            background: linear-gradient(90deg, var(--accent), var(--primary));
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #fff;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
             box-shadow: none;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary);
-            color: var(--primary);
+            background: rgba(77, 168, 218, 0.1);
+            color: var(--primary-dark);
         }
 
         footer {
             margin-top: 30px;
-            font-size: 12px;
-            color: #888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 600;
         }
 
         /* Confirmation overlay */
@@ -556,55 +536,42 @@
         }
 
         .start-screen p {
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            color: var(--primary);
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 700;
             animation: pulse-text 2s infinite;
             text-align: center;
             padding: 0 20px;
         }
 
         @keyframes pulse-text {
-            0% {
-                opacity: 0.5;
-                transform: scale(0.98);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.02);
-                text-shadow: 0 0 15px var(--primary);
-            }
-
-            100% {
-                opacity: 0.5;
-                transform: scale(0.98);
-            }
+            0% { opacity: 0.6; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.6; transform: scale(0.95); }
         }
 
         .music-toggle {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            background: #fff;
+            border: 2px solid var(--primary);
+            color: var(--primary-dark);
             width: 45px;
             height: 45px;
             border-radius: 50%;
             font-size: 18px;
             cursor: pointer;
             z-index: 999;
-            backdrop-filter: blur(5px);
             transition: all 0.3s;
             display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .music-toggle:hover {
             background: var(--primary);
-            color: #000;
+            color: #fff;
         }
     </style>
 </head>
@@ -613,17 +580,17 @@
 
     <!-- Audios -->
     <audio id="openSound" src="magia.mp3"></audio>
-    <audio id="bgMusic" src="musica_casamento.mp3" loop></audio>
+    <audio id="bgMusic" src="musica_infantil.mp3" loop></audio>
 
     <div class="start-screen" id="startScreen" onclick="startExperience()" ontouchstart="startExperience()">
-        <p>✨ Toque para iniciar a experiência ✨</p>
+        <p>🎈 Toque para iniciar a diversão! 🎈</p>
     </div>
 
     <!-- [FEATURE: INTRO ANIMADA INTERATIVA] -->
     <div class="intro" id="introScreen">
         <div class="intro-text-container">
-            <h1>O amor é a única coisa que cresce à medida que se reparte...<br><span>Vinicius & Izabelle</span></h1>
-            <button class="btn-unlock" onclick="unlockInvite()" ontouchstart="unlockInvite()">Abrir Convite ✨</button>
+            <h1>Prepare-se para entrar no mundo de...<br><span>Bluey & Sua Turma!</span></h1>
+            <button class="btn-unlock" onclick="unlockInvite()" ontouchstart="unlockInvite()">Entrar na Festa! 🎈</button>
         </div>
     </div>
 
@@ -642,17 +609,17 @@
             <button id="musicToggle" class="music-toggle" onclick="toggleMusic()">🔊</button>
             <div class="photo-wrapper">
                 <div class="photo-frame">
-                    <img src="casal.png" alt="Vinicius & Izabelle" id="casalPhoto">
+                    <img src="bluey_familia.png" alt="Aniversariante" id="casalPhoto">
                 </div>
             </div>
 
             <p class="subtitle">Você está convidado para o</p>
-            <h2>Casamento</h2>
-            <div class="name">de Vinicius & Izabelle ✨</div>
+            <h2>Aniversário</h2>
+            <div class="name">do Lucas! 🎈</div>
 
             <!-- COUNTDOWN -->
             <div class="countdown-container">
-                <h3>⏳ Contagem Regressiva</h3>
+                <h3>⏳ Contagem Regressiva para a Festa</h3>
                 <div class="countdown-grid">
                     <div class="countdown-item"><span id="days">00</span>
                         <p>Dias</p>
@@ -678,30 +645,30 @@
             </div>
 
             <div class="dress-code-box">
-                <strong>👗 Traje</strong>
-                <p>Passeio Completo / Social</p>
+                <strong>👕 Traje</strong>
+                <p>Roupa confortável para brincar muito!</p>
             </div>
 
             <!-- LINK PARA O MURAL -->
             <a class="btn btn-secondary" onclick="openSPA('viewMural')"
-                style="cursor: pointer; margin-bottom: 20px; font-size: 12px; letter-spacing: 1px;">
-                ✍️ Mural de Mensagens
+                style="cursor: pointer; margin-bottom: 20px; font-size: 14px;">
+                ✍️ Mural de Parabéns
             </a>
 
             <div class="btn-group">
                 <button class="btn" onclick="confirmPresence()">
-                    Confirmar Presença 💖
+                    Confirmar Presença 🎈
                 </button>
                 <a class="btn btn-secondary" onclick="openSPA('viewSugestoes')" style="cursor: pointer;">
-                    🎁 Lista de Presentes
+                    🎁 Sugestões de Presentes
                 </a>
                 <a class="btn btn-secondary" href="https://maps.app.goo.gl/wSFLmZDxpDuYiSnL8" target="_blank">
-                    🗺️ Local do Evento
+                    🗺️ Local da Festa
                 </a>
             </div>
 
             <footer>
-                Celebrando o amor verdadeiro ✨
+                Espero você lá! ✨
             </footer>
         </div> <!-- /viewHome -->
 
@@ -710,21 +677,20 @@
             style="display:none; flex-direction:column; animation: fadeInUp 0.8s ease-out forwards;">
             <div style="font-size: 50px; margin-bottom: 10px; animation: float 3s ease-in-out infinite;">🎁</div>
             <h2 style="font-size: 36px; margin-bottom: 15px;">Lista de Presentes</h2>
-            <p style="font-size: 14px; color: #ccc; margin-bottom: 25px; line-height: 1.5;">Sua presença é o nosso maior
-                presente! Caso deseje nos presentear, aqui estão algumas opções:</p>
+            <p style="font-size: 14px; color: var(--text); margin-bottom: 25px; line-height: 1.5; font-weight: 600;">Caso deseje me presentear, aqui estão algumas sugestões:</p>
 
             <!-- PIX BOX -->
-            <div class="dress-code-box" style="cursor:pointer; border-style: dashed;" onclick="copyPix()">
-                <strong>🔑 Pix (Qualquer Valor)</strong>
+            <div class="dress-code-box" style="cursor:pointer;" onclick="copyPix()">
+                <strong>🔑 Pix para Presentes</strong>
                 <p>Clique para copiar a chave Pix</p>
                 <div
-                    style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 12px; color: var(--primary); margin-top: 10px; letter-spacing: 1px;">
-                    pix@casamentovinieiza.com
+                    style="background: rgba(77, 168, 218, 0.1); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 14px; color: var(--primary-dark); margin-top: 10px; border: 1px solid var(--primary); font-weight: 700;">
+                    pix@aniversariodolucas.com
                 </div>
             </div>
 
             <a onclick="closeSPA()"
-                style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: transparent; color: #fff; font-weight: 600; font-size: 12px; border: 1px solid rgba(255,255,255,0.3); align-self: center; text-transform: uppercase; letter-spacing: 1px;">⬅️
+                style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; border: none; align-self: center;">⬅️
                 Voltar</a>
         </div>
 
@@ -732,33 +698,30 @@
         <div class="container" id="viewMural"
             style="display:none; flex-direction:column; animation: fadeInUp 0.8s ease-out forwards;">
             <h2 style="font-size: 45px;">✍️</h2>
-            <h2 style="font-size: 36px; margin-bottom: 15px;">Mural de Mensagens</h2>
-            <p style="font-size: 14px; color: #ccc; margin-bottom: 20px; line-height: 1.5;">Deixe uma mensagem de
-                carinho para os noivos!</p>
+            <h2 style="font-size: 36px; margin-bottom: 15px;">Mural de Parabéns</h2>
+            <p style="font-size: 14px; color: var(--text); margin-bottom: 20px; line-height: 1.5; font-weight: 600;">Deixe uma mensagem de parabéns para o Lucas!</p>
             <div style="width: 100%;">
                 <input type="text" id="spaGuestName" placeholder="Seu nome"
-                    style="width: 100%; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; margin-bottom: 15px; outline: none;" />
-                <textarea id="spaGuestMessage" placeholder="Sua mensagem..."
-                    style="width: 100%; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; margin-bottom: 15px; outline: none; resize: none; min-height: 80px;"></textarea>
+                    style="width: 100%; background: #fff; border: 2px solid var(--primary); border-radius: 10px; padding: 12px; color: var(--text); font-size: 14px; margin-bottom: 15px; outline: none; font-family: 'Fredoka', sans-serif;" />
+                <textarea id="spaGuestMessage" placeholder="Sua mensagem de parabéns..."
+                    style="width: 100%; background: #fff; border: 2px solid var(--primary); border-radius: 10px; padding: 12px; color: var(--text); font-size: 14px; margin-bottom: 15px; outline: none; resize: none; min-height: 80px; font-family: 'Fredoka', sans-serif;"></textarea>
                 <button onclick="spaAddMessage()"
-                    style="font-size: 14px; padding: 12px; width: 100%; background: rgba(212, 175, 55, 0.2); border: 1px solid var(--primary); color: var(--primary); border-radius: 10px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Enviar
-                    Mensagem ✨</button>
+                    style="font-size: 16px; padding: 12px; width: 100%; background: var(--accent); border: none; color: #fff; border-radius: 50px; cursor: pointer; font-weight: 700; font-family: 'Fredoka', sans-serif; margin-bottom: 15px;">Enviar Parabéns! 🎉</button>
             </div>
             <div id="spaMessagesList"
                 style="margin-top: 5px; max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; text-align: left; padding-right: 5px;">
             </div>
             <a onclick="closeSPA()"
-                style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: transparent; color: #fff; font-weight: 600; font-size: 12px; border: 1px solid rgba(255,255,255,0.3); margin-top:20px; align-self: center; text-transform: uppercase; letter-spacing: 1px;">⬅️
+                style="cursor:pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; border: none; align-self: center; margin-top: 20px;">⬅️
                 Voltar</a>
         </div>
     </div>
 
     <!-- Tela de confirmação -->
     <div class="confirmation-overlay" id="confOverlay">
-        <div class="conf-icon">🥂</div>
+        <div class="conf-icon">🎈</div>
         <div class="conf-text">Presença confirmada!<br><span
-                style="font-size: 14px; color: var(--primary); display: block; margin-top: 15px; font-family: 'Montserrat', sans-serif;">Nos
-                vemos no grande dia!</span></div>
+                style="font-size: 16px; color: var(--accent); display: block; margin-top: 15px; font-family: 'Fredoka', sans-serif; font-weight: 700;">Nos vemos na festinha!</span></div>
     </div>
 
     <div id="toast">📋 Texto copiado!</div>
@@ -827,6 +790,28 @@
 
         window.onload = function () {
             spaLoadMessages();
+            
+            // Countdown Logic
+            const targetDate = new Date('December 12, 2026 17:00:00').getTime();
+            const countdownInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('days').innerText = "00";
+                    document.getElementById('hours').innerText = "00";
+                    document.getElementById('minutes').innerText = "00";
+                }
+            }, 1000);
         };
 
         function openSPA(viewId) {
