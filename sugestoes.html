@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sugestões de Presente - Emilly Angell</title>
+    <title>Lista de Presentes - Vinicius & Izabelle</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #ff9ff3;
-            --primary-dark: #f368e0;
-            --bg-dark: #0f0c29;
-            --glass: rgba(255, 255, 255, 0.1);
+            --primary: #D4AF37; /* Premium Gold */
+            --primary-dark: #AA7C11;
+            --bg-dark: #0A0A0A; /* Deep Black */
+            --glass: rgba(0, 0, 0, 0.2); /* Lighter for a more vibrant look */
             --text: #ffffff;
         }
 
@@ -20,11 +20,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-color: var(--bg-dark);
             color: var(--text);
             display: flex;
             align-items: center;
@@ -35,28 +35,32 @@
             flex-direction: column;
         }
 
-        /* Animação de Fundo (Estrelas) */
-        .stars-container {
-            position: fixed;
+        /* Video Background constrained to card */
+        .card-bg-video {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
+            border-radius: 20px;
+            overflow: hidden;
             pointer-events: none;
         }
 
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle var(--duration) infinite ease-in-out;
+        .card-bg-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2) drop-shadow(0 0 5px white); }
+        .card-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
         }
 
         .container {
@@ -65,14 +69,13 @@
             max-width: 450px;
             width: 100%;
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 30px;
-            padding: 30px 25px;
+            border-radius: 20px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             animation: fadeInUp 0.8s ease-out forwards;
+            overflow: hidden;
         }
 
         @keyframes fadeInUp { 
@@ -82,7 +85,7 @@
 
         .header-icon {
             font-size: 50px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -92,11 +95,11 @@
         }
 
         h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 38px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
             color: var(--primary);
             margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         p.description {
@@ -106,59 +109,10 @@
             line-height: 1.5;
         }
 
-        .gift-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .gift-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,0.1);
-            border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(255, 159, 243, 0.2);
-        }
-
-        .gift-icon {
-            font-size: 28px;
-            background: rgba(255, 159, 243, 0.2);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-        }
-
-        .gift-info strong {
-            display: block;
-            color: #fff;
-            font-size: 16px;
-            margin-bottom: 3px;
-        }
-
-        .gift-info span {
-            color: #aaa;
-            font-size: 12px;
-        }
-
         .pix-box {
-            background: linear-gradient(135deg, rgba(255, 159, 243, 0.2), rgba(243, 104, 224, 0.1));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.4));
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-bottom: 25px;
             border: 1px dashed var(--primary);
             cursor: pointer;
@@ -167,34 +121,37 @@
         }
 
         .pix-box:hover {
-            background: rgba(255, 159, 243, 0.3);
+            background: rgba(212, 175, 55, 0.2);
         }
 
         .pix-box h3 {
             color: var(--primary);
+            font-family: 'Cinzel', serif;
             font-size: 16px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            letter-spacing: 1px;
         }
 
         .pix-key {
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 12px;
             border-radius: 10px;
             font-family: monospace;
             font-size: 14px;
             color: #fff;
             letter-spacing: 1px;
             word-break: break-all;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .pix-msg {
-            font-size: 11px;
-            color: #ccc;
-            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 12px;
             font-style: italic;
         }
 
@@ -208,9 +165,11 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 12px;
             border: 1px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-back:hover {
@@ -223,7 +182,7 @@
             visibility: hidden;
             min-width: 220px;
             background-color: var(--primary);
-            color: #1e1e2f;
+            color: #000;
             text-align: center;
             border-radius: 50px;
             padding: 12px 20px;
@@ -232,8 +191,11 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         #toast.show { visibility: visible; animation: fadeinToast 0.5s, fadeoutToast 0.5s 2.5s forwards; }
@@ -244,64 +206,42 @@
 </head>
 
 <body>
-    <!-- Fundo de estrelas -->
-    <div class="stars-container" id="stars"></div>
-
     <div class="container">
+        <div class="card-bg-video">
+            <video id="bgVideo" autoplay loop muted playsinline>
+                <source src="video_bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="card-video-overlay"></div>
+        </div>
         <div class="header-icon">🎁</div>
-        <h2>Sugestões de Presente</h2>
+        <h2>Lista de Presentes</h2>
         <p class="description">
-            Sua presença é o melhor presente! Mas para quem perguntou o que a Emilly gostaria de ganhar:
+            Sua presença é o nosso maior presente! Caso deseje nos presentear, aqui está nossa chave Pix para contribuições de qualquer valor.
         </p>
 
-        <div class="gift-list">
-            <div class="gift-card">
-                <div class="gift-icon">👗</div>
-                <div class="gift-info">
-                    <strong>Roupas / Blusinhas</strong>
-                    <span>Tamanho: M ou 14/16</span>
-                </div>
-            </div>
-            <div class="gift-card">
-                <div class="gift-icon">👟</div>
-                <div class="gift-info">
-                    <strong>Calçados</strong>
-                    <span>Tamo 36</span>
-                </div>
-            </div>
-            <div class="gift-card">
-                <div class="gift-icon">💄</div>
-                <div class="gift-info">
-                    <strong>Maquiagens & Skin Care</strong>
-                    <span>Glosses, hidratantes, paletas suaves</span>
-                </div>
-            </div>
+        <div class="pix-box" onclick="copyPix()">
+            <h3>🔑 Chave Pix</h3>
+            <div class="pix-key" id="pixKey">pix@casamentovinieiza.com</div>
+            <p class="pix-msg">Clique para copiar a chave</p>
         </div>
 
-
-        <a href="index.html#convite" class="btn-back">
+        <a href="index.html" class="btn-back">
             ⬅️ Voltar para o Convite
         </a>
     </div>
 
-    <div id="toast">📋 Chave Pix copiada!</div>
+    <div id="toast">Chave Pix copiada! 📋</div>
 
     <script>
-        // Estrelas
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 80; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            star.style.animationDelay = Math.random() * 5 + 's';
-            starsContainer.appendChild(star);
+        function copyPix() {
+            const pixKey = document.getElementById('pixKey').innerText;
+            navigator.clipboard.writeText(pixKey).then(() => {
+                const toast = document.getElementById('toast');
+                toast.className = 'show';
+                setTimeout(() => { toast.className = ''; }, 3000);
+            });
         }
-
-
     </script>
 </body>
 </html>

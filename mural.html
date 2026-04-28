@@ -3,55 +3,70 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Mural de Assinaturas - Emilly Angell</title>
+    <title>Mural de Assinaturas - Vinicius & Izabelle</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #ff9ff3;
-            --primary-dark: #f368e0;
-            --bg-dark: #0f0c29;
-            --glass: rgba(255, 255, 255, 0.1);
+            --primary: #D4AF37; /* Premium Gold */
+            --primary-dark: #AA7C11;
+            --bg-dark: #0A0A0A; /* Deep Black */
+            --glass: rgba(0, 0, 0, 0.2); /* Lighter for a more vibrant look */
             --text: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-color: var(--bg-dark);
             color: var(--text);
             display: flex; align-items: center; justify-content: center;
             min-height: 100vh; padding: 20px; overflow-x: hidden; flex-direction: column;
         }
 
-        .stars-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+        /* Video Background constrained to card */
+        .card-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            pointer-events: none;
         }
 
-        .star {
-            position: absolute; background: white; border-radius: 50%; opacity: 0.5;
-            animation: twinkle var(--duration) infinite ease-in-out;
+        .card-bg-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2) drop-shadow(0 0 5px white); }
+        .card-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
         }
 
         .container {
             position: relative; z-index: 1; max-width: 450px; width: 100%;
-            background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-radius: 30px; padding: 30px 25px; text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+            background: var(--glass);
+            border-radius: 20px; padding: 40px 30px; text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(212, 175, 55, 0.3);
             animation: fadeInUp 0.8s ease-out forwards;
+            overflow: hidden;
         }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h2 {
-            font-family: 'Dancing Script', cursive; font-size: 38px; color: var(--primary);
-            margin-bottom: 10px; text-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+            font-family: 'Great Vibes', cursive; font-size: 42px; color: var(--primary);
+            margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         p.description {
@@ -59,15 +74,15 @@
         }
 
         .mural-container input, .mural-container textarea {
-            width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; margin-bottom: 15px; outline: none;
         }
         .mural-container textarea { resize: vertical; min-height: 80px; }
         
         .mural-btn {
-            font-size: 15px; padding: 12px; width: 100%; background: rgba(255, 159, 243, 0.2);
-            border: 1px solid var(--primary); color: #fff; border-radius: 10px;
-            cursor: pointer; transition: all 0.3s; font-weight: 600; margin-bottom: 25px;
+            font-size: 14px; padding: 12px; width: 100%; background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--primary); color: var(--primary); border-radius: 10px;
+            cursor: pointer; transition: all 0.3s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px;
         }
         .mural-btn:hover { background: var(--primary); color: #000; }
         
@@ -79,26 +94,28 @@
         .messages-list::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
         
         .message-card {
-            background: rgba(255, 159, 243, 0.1); padding: 15px; border-radius: 15px;
+            background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 12px;
             border-left: 4px solid var(--primary); animation: fadeInText 0.5s ease-out;
         }
         @keyframes fadeInText { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
         
-        .message-card strong { display: block; color: var(--primary); font-size: 15px; margin-bottom: 4px; }
-        .message-card span { font-size: 14px; color: #eee; line-height: 1.4; display: block; }
+        .message-card strong { display: block; color: var(--primary); font-size: 14px; margin-bottom: 4px; }
+        .message-card span { font-size: 13px; color: #eee; line-height: 1.4; display: block; }
         .message-card small { font-size: 10px; color: #888; display: block; margin-top: 5px; text-align: right; }
 
         .btn-back {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 25px; border-radius: 50px;
-            background: transparent; color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+            background: transparent; color: #fff; text-decoration: none; font-weight: 600; font-size: 12px;
             border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; margin-top: 25px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
         .btn-back:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); color: var(--primary); }
 
         #toast {
-            visibility: hidden; min-width: 220px; background-color: var(--primary); color: #1e1e2f;
+            visibility: hidden; min-width: 220px; background-color: var(--primary); color: #000;
             text-align: center; border-radius: 50px; padding: 12px 20px; position: fixed; z-index: 1000;
-            bottom: 30px; left: 50%; transform: translateX(-50%); font-weight: 700; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            bottom: 30px; left: 50%; transform: translateX(-50%); font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
         }
         #toast.show { visibility: visible; animation: fadeinToast 0.5s, fadeoutToast 0.5s 2.5s forwards; }
         @keyframes fadeinToast { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
@@ -107,51 +124,41 @@
 </head>
 
 <body>
-    <div class="stars-container" id="stars"></div>
-
     <div class="container">
+        <div class="card-bg-video">
+            <video id="bgVideo" autoplay loop muted playsinline>
+                <source src="video_bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="card-video-overlay"></div>
+        </div>
         <h2 style="font-size: 45px;">✍️</h2>
         <h2>Mural de Mensagens</h2>
         <p class="description">
-            Deixe um recadinho! Ele ficará salvo no nosso mural secreto.
+            Deixe uma mensagem de carinho para os noivos!
         </p>
 
         <div class="mural-container">
-            <input type="text" id="guestName" placeholder="Seu nome ou apelido" />
-            <textarea id="guestMessage" placeholder="Escreva sua mensagem de carinho aqui..."></textarea>
-            <button class="mural-btn" onclick="addMessage()">Enviar Mensagem 💌</button>
+            <input type="text" id="guestName" placeholder="Seu nome" />
+            <textarea id="guestMessage" placeholder="Escreva sua mensagem aqui..."></textarea>
+            <button class="mural-btn" onclick="addMessage()">Enviar Mensagem ✨</button>
         </div>
 
         <div id="messagesList" class="messages-list">
             <!-- Mensagens aparecem aqui -->
         </div>
 
-        <a href="index.html#convite" class="btn-back">
+        <a href="index.html" class="btn-back">
             ⬅️ Voltar para o Convite
         </a>
     </div>
 
-    <div id="toast">Mensagem enviada com sucesso! 💖</div>
+    <div id="toast">Mensagem enviada! 💖</div>
 
     <script>
-        // Estrelas
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 80; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            star.style.animationDelay = Math.random() * 5 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        // [DASHBOARD] Mural de Mensagens LocalStorage
         function loadMessages() {
             const list = document.getElementById('messagesList');
-            const messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
+            const messages = JSON.parse(localStorage.getItem('casamento_messages') || '[]');
             list.innerHTML = '';
             
             if(messages.length === 0) {
@@ -174,10 +181,10 @@
             const text = document.getElementById('guestMessage').value;
             if(!name || !text) return;
 
-            const messages = JSON.parse(localStorage.getItem('emilly_messages') || '[]');
+            const messages = JSON.parse(localStorage.getItem('casamento_messages') || '[]');
             const dateStr = new Date().toLocaleDateString('pt-BR');
             messages.unshift({ name, text, date: dateStr });
-            localStorage.setItem('emilly_messages', JSON.stringify(messages));
+            localStorage.setItem('casamento_messages', JSON.stringify(messages));
             
             document.getElementById('guestName').value = '';
             document.getElementById('guestMessage').value = '';
