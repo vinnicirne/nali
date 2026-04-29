@@ -959,7 +959,6 @@
                         <div class="slide"><img src="look3.png" alt="Look 3" onclick="openLightbox(this.src)"></div>
                         <div class="slide"><img src="look4.png" alt="Look 4" onclick="openLightbox(this.src)"></div>
                         <div class="slide"><img src="look5.png" alt="Look 5" onclick="openLightbox(this.src)"></div>
-                        <div class="slide"><img src="look6.png" alt="Look 6" onclick="openLightbox(this.src)"></div>
                     </div>
                     <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
                 </div>
@@ -970,7 +969,6 @@
                     <div class="dot" onclick="currentSlide(2)"></div>
                     <div class="dot" onclick="currentSlide(3)"></div>
                     <div class="dot" onclick="currentSlide(4)"></div>
-                    <div class="dot" onclick="currentSlide(5)"></div>
                 </div>
             </div>
 
@@ -1023,10 +1021,6 @@
                     </div>
                     <div class="gallery-item" onclick="openLightbox('look5.png')">
                         <img src="look5.png" alt="Look 5">
-                        <div class="gallery-overlay">🔍</div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('look6.png')">
-                        <img src="look6.png" alt="Look 6">
                         <div class="gallery-overlay">🔍</div>
                     </div>
                 </div>
@@ -1107,7 +1101,7 @@
         }
 
         let currentLightboxIndex = 0;
-        const lightboxImages = ['look1.png', 'look2.png', 'look3.png', 'look4.png', 'look5.png', 'look6.png'];
+        const lightboxImages = ['look1.png', 'look2.png', 'look3.png', 'look4.png', 'look5.png'];
 
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
