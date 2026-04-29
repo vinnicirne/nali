@@ -15,14 +15,20 @@
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#e8a5a5" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            --primary: #e8a5a5; /* Dusty Rose */
-            --primary-dark: #8c5252; /* Burgundy/Brown */
-            --accent: #d4af37; /* Gold */
-            --bg-dark: #121212; /* Rich Dark */
+            --primary: #e8a5a5;
+            /* Dusty Rose */
+            --primary-dark: #8c5252;
+            /* Burgundy/Brown */
+            --accent: #d4af37;
+            /* Gold */
+            --bg-dark: #121212;
+            /* Rich Dark */
             --glass: rgba(18, 18, 18, 0.85);
             --text: #ffffff;
             --text-gold: #d4af37;
@@ -148,13 +154,27 @@
         }
 
         @keyframes fadeInText {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .main-content {
@@ -188,7 +208,10 @@
 
         /* [FEATURE: MOBILE FIRST] */
         @media (max-width: 480px) {
-            body { padding: 0; }
+            body {
+                padding: 0;
+            }
+
             .container {
                 border-radius: 0;
                 border: none;
@@ -199,7 +222,10 @@
                 flex-direction: column;
                 justify-content: center;
             }
-            .card-bg-video { border-radius: 0; }
+
+            .card-bg-video {
+                border-radius: 0;
+            }
         }
 
         /* [FEATURE: MOBILE FIRST / STORIES VIEW] */
@@ -207,10 +233,12 @@
             body {
                 padding: 0;
             }
+
             .main-content {
                 max-width: 100vw;
                 min-height: 100vh;
             }
+
             .container {
                 border-radius: 0;
                 border: none;
@@ -218,9 +246,11 @@
                 min-height: 100vh;
                 box-shadow: none;
             }
+
             .card-bg-video {
                 border-radius: 0;
             }
+
             .start-screen p {
                 font-size: 14px;
                 letter-spacing: 2px;
@@ -244,7 +274,7 @@
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             animation: floatPhoto 4s ease-in-out infinite;
             background: #121212;
         }
@@ -256,8 +286,15 @@
         }
 
         @keyframes floatPhoto {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         h2 {
@@ -285,6 +322,160 @@
             font-style: italic;
             color: var(--primary);
             margin-bottom: 30px;
+        }
+
+        /* LOOKBOOK SLIDER & GALLERY */
+        .lookbook-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Slider */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 1px solid rgba(232, 165, 165, 0.3);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 500px;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            color: #121212;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .slider-btn.prev { left: 15px; }
+        .slider-btn.next { right: 15px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(232, 165, 165, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            border: 1px solid rgba(232, 165, 165, 0.2);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(232, 165, 165, 0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.6);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
         /* COUNTDOWN UI */
@@ -558,9 +749,20 @@
         }
 
         @keyframes pulse-text {
-            0% { opacity: 0.6; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
-            100% { opacity: 0.6; transform: scale(0.95); }
+            0% {
+                opacity: 0.6;
+                transform: scale(0.95);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 0.6;
+                transform: scale(0.95);
+            }
         }
 
         .music-toggle {
@@ -578,7 +780,7 @@
             z-index: 999;
             transition: all 0.3s;
             display: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .music-toggle:hover {
@@ -627,7 +829,8 @@
 
             <p class="subtitle">Nova Coleção</p>
             <h2>Outono / Inverno</h2>
-            <div class="name" style="font-size: 24px; font-style: normal; font-family: 'Montserrat', sans-serif;">Nali Ateliê</div>
+            <div class="name" style="font-size: 24px; font-style: normal; font-family: 'Montserrat', sans-serif;">Nali
+                Ateliê</div>
 
             <!-- COUNTDOWN -->
             <div class="countdown-container">
@@ -653,6 +856,56 @@
                 <div class="info-card">
                     <strong>📍 Local</strong>
                     Loja Física & Online
+                </div>
+            </div>
+
+            <!-- LOOKBOOK SECTION -->
+            <div class="lookbook-section">
+                <h3 class="section-title">✨ Nossos Looks ✨</h3>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+                    <div class="slider-wrapper" id="sliderWrapper">
+                        <div class="slide"><img src="look1.png" alt="Look 1"></div>
+                        <div class="slide"><img src="look2.png" alt="Look 2"></div>
+                        <div class="slide"><img src="look3.png" alt="Look 3"></div>
+                        <div class="slide"><img src="look4.png" alt="Look 4"></div>
+                        <div class="slide"><img src="look5.png" alt="Look 5"></div>
+                    </div>
+                    <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+                    
+                    <div class="slider-dots" id="sliderDots">
+                        <div class="dot active" onclick="currentSlide(0)"></div>
+                        <div class="dot" onclick="currentSlide(1)"></div>
+                        <div class="dot" onclick="currentSlide(2)"></div>
+                        <div class="dot" onclick="currentSlide(3)"></div>
+                        <div class="dot" onclick="currentSlide(4)"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                        <img src="look1.png" alt="Look 1">
+                        <div class="gallery-overlay">🔗</div>
+                    </div>
+                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                        <img src="look2.png" alt="Look 2">
+                        <div class="gallery-overlay">🔗</div>
+                    </div>
+                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                        <img src="look3.png" alt="Look 3">
+                        <div class="gallery-overlay">🔗</div>
+                    </div>
+                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                        <img src="look4.png" alt="Look 4">
+                        <div class="gallery-overlay">🔗</div>
+                    </div>
+                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                        <img src="look5.png" alt="Look 5">
+                        <div class="gallery-overlay">🔗</div>
+                    </div>
                 </div>
             </div>
 
@@ -747,7 +1000,7 @@
         window.onload = function () {
             // Countdown Logic
             const targetDate = new Date('December 12, 2026 17:00:00').getTime();
-            const countdownInterval = setInterval(function() {
+            const countdownInterval = setInterval(function () {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
 
@@ -764,6 +1017,46 @@
                 }
             }, 1000);
         };
+
+        let currentSlideIndex = 0;
+        const totalSlides = 5;
+
+        function updateSlider() {
+            const wrapper = document.getElementById('sliderWrapper');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (wrapper) {
+                wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            }
+            
+            dots.forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            updateSlider();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            updateSlider();
+        }
+
+        // Auto slide
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
 
         function showToast(text) {
             const toast = document.getElementById('toast');
