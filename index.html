@@ -347,7 +347,7 @@
             margin: 0 auto 30px;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(232, 165, 165, 0.3);
         }
 
@@ -395,8 +395,13 @@
             box-shadow: 0 0 15px var(--primary);
         }
 
-        .slider-btn.prev { left: 15px; }
-        .slider-btn.next { right: 15px; }
+        .slider-btn.prev {
+            left: 15px;
+        }
+
+        .slider-btn.next {
+            right: 15px;
+        }
 
         .slider-dots {
             display: flex;
@@ -437,7 +442,7 @@
             cursor: pointer;
             border: 1px solid rgba(232, 165, 165, 0.2);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-item img {
@@ -476,6 +481,58 @@
 
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
+        }
+
+        /* LIGHTBOX / ZOOM */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 12, 12, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 2px solid var(--primary);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--text);
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
         }
 
         /* COUNTDOWN UI */
@@ -862,19 +919,19 @@
             <!-- LOOKBOOK SECTION -->
             <div class="lookbook-section">
                 <h3 class="section-title">✨ Nossos Looks ✨</h3>
-                
+
                 <!-- Slider -->
                 <div class="slider-container">
                     <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
                     <div class="slider-wrapper" id="sliderWrapper">
-                        <div class="slide"><img src="look1.png" alt="Look 1"></div>
-                        <div class="slide"><img src="look2.png" alt="Look 2"></div>
-                        <div class="slide"><img src="look3.png" alt="Look 3"></div>
-                        <div class="slide"><img src="look4.png" alt="Look 4"></div>
-                        <div class="slide"><img src="look5.png" alt="Look 5"></div>
+                        <div class="slide"><img src="look1.png" alt="Look 1" onclick="openLightbox(this.src)"></div>
+                        <div class="slide"><img src="look2.png" alt="Look 2" onclick="openLightbox(this.src)"></div>
+                        <div class="slide"><img src="look3.png" alt="Look 3" onclick="openLightbox(this.src)"></div>
+                        <div class="slide"><img src="look4.png" alt="Look 4" onclick="openLightbox(this.src)"></div>
+                        <div class="slide"><img src="look5.png" alt="Look 5" onclick="openLightbox(this.src)"></div>
                     </div>
                     <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
-                    
+
                     <div class="slider-dots" id="sliderDots">
                         <div class="dot active" onclick="currentSlide(0)"></div>
                         <div class="dot" onclick="currentSlide(1)"></div>
@@ -886,25 +943,25 @@
 
                 <!-- Gallery -->
                 <div class="gallery-grid">
-                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                    <div class="gallery-item" onclick="openLightbox('look1.png')">
                         <img src="look1.png" alt="Look 1">
-                        <div class="gallery-overlay">🔗</div>
+                        <div class="gallery-overlay">🔍</div>
                     </div>
-                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                    <div class="gallery-item" onclick="openLightbox('look2.png')">
                         <img src="look2.png" alt="Look 2">
-                        <div class="gallery-overlay">🔗</div>
+                        <div class="gallery-overlay">🔍</div>
                     </div>
-                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                    <div class="gallery-item" onclick="openLightbox('look3.png')">
                         <img src="look3.png" alt="Look 3">
-                        <div class="gallery-overlay">🔗</div>
+                        <div class="gallery-overlay">🔍</div>
                     </div>
-                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                    <div class="gallery-item" onclick="openLightbox('look4.png')">
                         <img src="look4.png" alt="Look 4">
-                        <div class="gallery-overlay">🔗</div>
+                        <div class="gallery-overlay">🔍</div>
                     </div>
-                    <div class="gallery-item" onclick="window.open('https://www.instagram.com/use.naliatelie/', '_blank')">
+                    <div class="gallery-item" onclick="openLightbox('look5.png')">
                         <img src="look5.png" alt="Look 5">
-                        <div class="gallery-overlay">🔗</div>
+                        <div class="gallery-overlay">🔍</div>
                     </div>
                 </div>
             </div>
@@ -918,7 +975,7 @@
                 <a class="btn" href="https://www.instagram.com/use.naliatelie/" target="_blank">
                     🛍️ Ver Coleção no Instagram
                 </a>
-                <a class="btn btn-secondary" href="https://wa.me/5500000000000" target="_blank">
+                <a class="btn btn-secondary" href="https://wa.me/5521984307701" target="_blank">
                     💬 Atendimento no WhatsApp
                 </a>
                 <a class="btn btn-secondary" href="https://maps.app.goo.gl/..." target="_blank">
@@ -934,6 +991,12 @@
     </div>
 
     <div id="toast">📋 Texto copiado!</div>
+
+    <!-- [FEATURE: LIGHTBOX / ZOOM DA IMAGEM] -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Imagem Ampliada">
+    </div>
 
     <!-- CDN Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -980,6 +1043,22 @@
             }, 1000);
         }
 
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox) {
+                lightbox.classList.remove('active');
+            }
+        }
+
         function unlockInvite() {
             const intro = document.getElementById('introScreen');
             const main = document.getElementById('mainContent');
@@ -1024,11 +1103,11 @@
         function updateSlider() {
             const wrapper = document.getElementById('sliderWrapper');
             const dots = document.querySelectorAll('.dot');
-            
+
             if (wrapper) {
                 wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
             }
-            
+
             dots.forEach((dot, index) => {
                 if (index === currentSlideIndex) {
                     dot.classList.add('active');
