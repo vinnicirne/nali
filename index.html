@@ -515,7 +515,7 @@
             max-width: 90%;
             max-height: 90%;
             border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             border: 2px solid var(--primary);
             transform: scale(0.9);
             transition: transform 0.3s ease;
@@ -547,8 +547,13 @@
             box-shadow: 0 0 15px var(--primary);
         }
 
-        .lightbox-btn.prev { left: 20px; }
-        .lightbox-btn.next { right: 20px; }
+        .lightbox-btn.prev {
+            left: 20px;
+        }
+
+        .lightbox-btn.next {
+            right: 20px;
+        }
 
         @media (max-width: 480px) {
             .lightbox-btn {
@@ -556,8 +561,14 @@
                 height: 40px;
                 font-size: 18px;
             }
-            .lightbox-btn.prev { left: 10px; }
-            .lightbox-btn.next { right: 10px; }
+
+            .lightbox-btn.prev {
+                left: 10px;
+            }
+
+            .lightbox-btn.next {
+                right: 10px;
+            }
         }
 
         .lightbox-close {
@@ -938,7 +949,7 @@
             <!-- LOOKBOOK SLIDER SECTION -->
             <div class="lookbook-section">
                 <h3 class="section-title">✨ Nossos Looks ✨</h3>
-                
+
                 <!-- Slider -->
                 <div class="slider-container">
                     <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
@@ -948,6 +959,7 @@
                         <div class="slide"><img src="look3.png" alt="Look 3" onclick="openLightbox(this.src)"></div>
                         <div class="slide"><img src="look4.png" alt="Look 4" onclick="openLightbox(this.src)"></div>
                         <div class="slide"><img src="look5.png" alt="Look 5" onclick="openLightbox(this.src)"></div>
+                        <div class="slide"><img src="look6.png" alt="Look 6" onclick="openLightbox(this.src)"></div>
                     </div>
                     <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
                 </div>
@@ -958,6 +970,7 @@
                     <div class="dot" onclick="currentSlide(2)"></div>
                     <div class="dot" onclick="currentSlide(3)"></div>
                     <div class="dot" onclick="currentSlide(4)"></div>
+                    <div class="dot" onclick="currentSlide(5)"></div>
                 </div>
             </div>
 
@@ -1010,6 +1023,10 @@
                     </div>
                     <div class="gallery-item" onclick="openLightbox('look5.png')">
                         <img src="look5.png" alt="Look 5">
+                        <div class="gallery-overlay">🔍</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('look6.png')">
+                        <img src="look6.png" alt="Look 6">
                         <div class="gallery-overlay">🔍</div>
                     </div>
                 </div>
@@ -1090,7 +1107,7 @@
         }
 
         let currentLightboxIndex = 0;
-        const lightboxImages = ['look1.png', 'look2.png', 'look3.png', 'look4.png', 'look5.png'];
+        const lightboxImages = ['look1.png', 'look2.png', 'look3.png', 'look4.png', 'look5.png', 'look6.png'];
 
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
